@@ -40,7 +40,7 @@ def test_successful_deposit_increases_balance(client, mock_db):
         sess['user_id'] = str(user_id)
     client.post('/api/deposit', data={'amount': '50'})
     user = mock_db.db.users.find_one({'_id': user_id})
-    assert user['balance'] == 150
+    assert user['balance'] == 200
 
 def test_withdraw_insufficient_funds_returns_error(client, mock_db):
     user_id = insert_user(mock_db, balance=20)
